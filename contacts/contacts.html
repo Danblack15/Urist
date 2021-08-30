@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name = "description" content = "Контакты, связь с юристами, телефон юристов, позвонить юристам, юридическая помощь, контакты юристов пермь" />
+  <meta name = "keywords" content = "Контакты, связь с юристами, телефон юристов, позвонить юристам, телефон, почта, емайл, юридическая помощь контакты, юридическая помощь, контакты юристов пермь" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="../img/favico.ico" type="image/ico">
+  <title>Контакты</title>
+  <script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+  <style>
+  a{
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+  }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="background_header">
+      <div class="header_name">
+        <p>Юридические Услуги</p>
+      </div>
+      <div class="contacts">
+        <p>тел: +7-919-442-72-54</p>
+      </div>
+    </div>
+  </header>
+  <div class="pod_header">
+    <ul>
+      <a href="../index.html"><li><p>Главная</p></li></a>
+      <a href="../price/price.html"><li><p>Цены</p></li></a>
+      <a><li id="second"><p>Контакты</p></li></a>
+    </ul>
+  </div>
+  <div class="content">
+    <div class="quest">
+      <p>Как связаться с нами?</p>
+    </div>
+    <div class="osn_contacts">
+      <div class="email">
+        <p>Электонная почта</p>
+        <p id="text1" value="fedorov_danilka@bk.ru">PermYrist@yandex.ru</p>
+        <span>
+          <input onclick="copytext('#text1')" type="button" name="email" value="копировать" class="click_button">
+        </span>
+        <p class="city">Г. Пермь</p>
+      </div>
+      <div class="phone">
+        <p>Номер телефона</p>
+        <p><a>+7-912-884-45-61</a></p>
+        <p>(Ольга Олеговна)</p>
+        <p><a>+7-912-885-22-55</a></p>
+        <p>Антиколлектор</p>
+        <p>(Алексей Сергеевич)</p>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <p><a>Контакты</a></p>
+    <p>Г. Пермь</p>
+  </footer>
+
+  <script type="text/javascript">
+    var main = function(){
+      /*$('.click_button').on('click',function(){
+        window.open('https://e.mail.ru/inbox/', '_blank');
+      });*/
+
+      /** При нажатии на кнопку мы перемещаемся к началу страницы */
+      $('#second').click(function () {
+          $('body,html').animate({
+              scrollTop: 0
+          }, 300);
+          return false;
+      });
+    };
+            /*Вычисления высоты*/
+      $(document).ready(function(){
+        var element_1 = $('.email');
+            element_2 = $('.phone');
+
+        $(window).scroll(function(){
+          var scroll = $(window).scrollTop() + $(window).height();
+              offset_1 = element_1.offset().top + element_1.height()/3.5;
+              offset_2 = element_2.offset().top + element_2.height()/3.5;
+
+        if (scroll > offset_1){
+          $(element_1).addClass('fadeLeft');
+        };
+        if (scroll > offset_2){
+          $(element_2).addClass('fadeRight');
+        };
+      });
+    });
+    $(document).ready(main);
+
+    function copytext(el){
+      var $tmp = $('<input>');
+          name = 'Good';
+      $('body').append($tmp);
+      $tmp.val($(el).text()).select();
+      document.execCommand('copy');
+      $tmp.remove();
+    }
+    $('.click_button[value="копировать"]').on('click',function(){
+      $(this).val('скопировано');
+    });
+
+
+    if (screen.width <= 1024){
+      $('.phone a:nth-child(1)').attr("href", "tel:+7-912-884-45-61");
+      $('.phone a:nth-child(1)').attr("href", "tel:+7-912-885-22-55");
+    }
+  </script>
+</body>
+</html>
